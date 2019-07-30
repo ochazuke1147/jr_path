@@ -1,6 +1,6 @@
 from graphillion import GraphSet as gs
 import pandas as pd
-from src.func import get_critical_path
+from src.func import get_critical_path, Timer
 
 line_list = pd.read_csv('./route_data/route.csv', sep=',')
 station_list = pd.read_csv('./route_data/st.csv', sep=',')
@@ -38,9 +38,22 @@ print(stations)
 print(weights)
 
 # 0,6の字ルートを探索したい場合は上位3桁がgoalの駅全てをgoalにして探索する必要がある
-current = 1
-goal = 93
 
+critical_path_lengths = {}
+
+for current in range(1, 10):
+    for goal in range(1, 10):
+        result = get_critical_path(gs, stations, weights, current, goal)
+        if len(result) == 0:
+            continue
+        critical_path_lengths.setdefault((current, goal), max(result))
+
+current = 2
+goal = 2
+
+timer1 = Timer()
 result = get_critical_path(gs, stations, weights, current, goal)
-
 print(result)
+print(timer1.time_elapsed())
+
+print(critical_path_lengths)
