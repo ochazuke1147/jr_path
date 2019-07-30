@@ -41,6 +41,8 @@ print(weights)
 
 critical_path_lengths = {}
 
+timer1 = Timer()
+
 for current in range(1, 10):
     for goal in range(1, 10):
         result = get_critical_path(gs, stations, weights, current, goal)
@@ -48,12 +50,7 @@ for current in range(1, 10):
             continue
         critical_path_lengths.setdefault((current, goal), max(result))
 
-current = 2
-goal = 2
-
-timer1 = Timer()
-result = get_critical_path(gs, stations, weights, current, goal)
-print(result)
-print(timer1.time_elapsed())
+whole_time = timer1.time_elapsed()
+print('whole_time:', whole_time)
 
 print(critical_path_lengths)
