@@ -21,6 +21,7 @@ def get_critical_path(graph_set, stations, weights, start, goal):
         if sta_num % 1000 == goal:
             goal_stations.append(sta_num)
 
+    print(goal_stations)
     for goal_sta in goal_stations:
         current = start
         paths = graph_set.paths(current, goal_sta)
