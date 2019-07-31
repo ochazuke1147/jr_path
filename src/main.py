@@ -7,6 +7,7 @@ station_list = pd.read_csv('./route_data/st.csv', sep=',')
 stations = {}
 univ = []
 weights = {}
+path_list = './map/path_list.csv'
 
 # read station information
 for i, sta in station_list.iterrows():
@@ -55,5 +56,11 @@ whole_time = timer1.time_elapsed()
 print('whole_time:', whole_time)
 
 print(critical_path_lengths)
+
+critical_path_stations = [(1,'村上',139.4636089,38.2202371)]
+
+df = pd.DataFrame(critical_path_stations, columns=['駅番号', '駅名', '東経', '北緯'])
+
+df.to_csv(path_list, index=False)
 
 # TODO: 経路特定区間に対応させる
