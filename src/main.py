@@ -63,4 +63,5 @@ df = pd.DataFrame(critical_path_stations, columns=['駅番号', '駅名', '東�
 
 df.to_csv(path_list, index=False)
 
+# TODO: critical_path_stationsを設定する
 # TODO: 経路特定区間に対応させる
