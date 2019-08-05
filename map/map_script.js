@@ -1,128 +1,128 @@
 var map;
 var marker;
 var center = {
-    lat: 35.170694, // ç·¯åº¦
-    lng: 136.881637 // çµŒåº¦
+    lat: 35.170694, // ˆÜ“x
+    lng: 136.881637 // Œo“x
 };
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('sample'), {
-        center: center, // åœ°å›³ã®ä¸­å¿ƒã‚’æŒ‡å®š
-        zoom: 6 // åœ°å›³ã®ã‚ºãƒ¼ãƒ ã‚’æŒ‡å®š
+        center: center, // ’n}‚Ì’†S‚ğw’è
+        zoom: 6 // ’n}‚ÌƒY[ƒ€‚ğw’è
     });
-// pathã®ãƒ©ã‚¤ãƒ³è¨­å®š
+// path‚Ìƒ‰ƒCƒ“İ’è
     var path_line = new google.maps.Polyline({
         map: map,
         path:[
-// æ‘ä¸Š
+// ‘ºã
             new google.maps.LatLng(38.2202371,139.4636089),
-// æ–°ç™ºç”°
+// V”­“c
             new google.maps.LatLng(37.9440569,139.3350935),
-// æ–°æ´¥
+// V’Ã
             new google.maps.LatLng(37.8004686,139.1212473),
-// æ±ä¸‰æ¡
+// “ŒOğ
             new google.maps.LatLng(37.6285143,138.9736524),
-// å®®å†…
+// ‹{“à
             new google.maps.LatLng(37.4220999,138.8402313),
-// æŸå´
+// ”è
             new google.maps.LatLng(37.3637096,138.5562887),
-// å‰ç”°
+// ‹g“c
             new google.maps.LatLng(37.6871131,138.8786033),
-// æ–°æ½Ÿ
+// VŠƒ
             new google.maps.LatLng(37.91209,139.0617442),
-// æ–°ç™ºç”°
+// V”­“c
             new google.maps.LatLng(37.9440569,139.3350935),
         ],
-        strokeColor: "rgb(0 ,51,204)", //ç·šè‰²(def:#000000)
-        strokeOpacity: 0.5, //é€æ˜åº¦0ï½1(def:1)
-        strokeWeight: 5, //pxæŒ‡å®šï¼ˆdef:1)
-        zIndex: 1 //é‡ãªã‚Šé †
+        strokeColor: "rgb(0 ,51,204)", //üF(def:#000000)
+        strokeOpacity: 0.5, //“§–¾“x0`1(def:1)
+        strokeWeight: 5, //pxw’èidef:1)
+        zIndex: 1 //d‚È‚è‡
         }
     );
-// é§…ã®ãƒãƒ¼ã‚«ãƒ¼è¨­å®š
+// ‰w‚Ìƒ}[ƒJ[İ’è
     var markers = [
-// æ‘ä¸Š
+// ‘ºã
         {
             position : { lat: 38.2202371, lng: 139.4636089 },
-            title: "æ‘ä¸Š",
+            title: "‘ºã",
             label_text: "0",
             color: "blue"
         },
-// æ–°ç™ºç”°
+// V”­“c
         {
             position : { lat: 37.9440569, lng: 139.3350935 },
-            title: "æ–°ç™ºç”°",
+            title: "V”­“c",
             label_text: "1",
             color: "blue"
         },
-// æ–°æ´¥
+// V’Ã
         {
             position : { lat: 37.8004686, lng: 139.1212473 },
-            title: "æ–°æ´¥",
+            title: "V’Ã",
             label_text: "2",
             color: "blue"
         },
-// æ±ä¸‰æ¡
+// “ŒOğ
         {
             position : { lat: 37.6285143, lng: 138.9736524 },
-            title: "æ±ä¸‰æ¡",
+            title: "“ŒOğ",
             label_text: "3",
             color: "blue"
         },
-// å®®å†…
+// ‹{“à
         {
             position : { lat: 37.4220999, lng: 138.8402313 },
-            title: "å®®å†…",
+            title: "‹{“à",
             label_text: "4",
             color: "blue"
         },
-// æŸå´
+// ”è
         {
             position : { lat: 37.3637096, lng: 138.5562887 },
-            title: "æŸå´",
+            title: "”è",
             label_text: "5",
             color: "blue"
         },
-// å‰ç”°
+// ‹g“c
         {
             position : { lat: 37.6871131, lng: 138.8786033 },
-            title: "å‰ç”°",
+            title: "‹g“c",
             label_text: "6",
             color: "blue"
         },
-// æ–°æ½Ÿ
+// VŠƒ
         {
             position : { lat: 37.91209, lng: 139.0617442 },
-            title: "æ–°æ½Ÿ",
+            title: "VŠƒ",
             label_text: "7",
             color: "blue"
         },
-// æ–°ç™ºç”°
+// V”­“c
         {
             position : { lat: 37.9440569, lng: 139.3350935 },
-            title: "æ–°ç™ºç”°",
+            title: "V”­“c",
             label_text: "8",
             color: "blue"
         },
     ];
-// è¤‡æ•°ã®ãƒãƒ¼ã‚«ãƒ¼ã‚’é…ç½®
+// •¡”‚Ìƒ}[ƒJ[‚ğ”z’u
     for (var m of markers){
         var marker = new google.maps.Marker({
             map: map,
             position: m.position,
             icon: {
-                fillColor: m.color, //å¡—ã‚Šæ½°ã—è‰²
-                fillOpacity: 0.8, //å¡—ã‚Šæ½°ã—é€éç‡
-                path: google.maps.SymbolPath.CIRCLE, //å††ã‚’æŒ‡å®š
-                scale: 16, //å††ã®ã‚µã‚¤ã‚º
-                strokeColor: m.color, //æ ã®è‰²
-                strokeWeight: 1.0 //æ ã®é€éç‡
+                fillColor: m.color, //“h‚è’×‚µF
+                fillOpacity: 0.8, //“h‚è’×‚µ“§‰ß—¦
+                path: google.maps.SymbolPath.CIRCLE, //‰~‚ğw’è
+                scale: 16, //‰~‚ÌƒTƒCƒY
+                strokeColor: m.color, //˜g‚ÌF
+                strokeWeight: 1.0 //˜g‚Ì“§‰ß—¦
             },
             title: m.title,
             label: {
-                text: m.label_text, //ãƒ©ãƒ™ãƒ«æ–‡å­—
-                color: '#FFFFFF', //æ–‡å­—ã®è‰²
-                fontSize: '20px' //æ–‡å­—ã®ã‚µã‚¤ã‚º
+                text: m.label_text, //ƒ‰ƒxƒ‹•¶š
+                color: '#FFFFFF', //•¶š‚ÌF
+                fontSize: '20px' //•¶š‚ÌƒTƒCƒY
             }
         });
     }
