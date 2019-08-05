@@ -7,7 +7,7 @@ def make_map():
     path_list = pd.read_csv('./map/path_list.csv', sep=',')
     script_path = './map/map_script.js'
 
-    script_code1 = textwrap.dedent('''\
+    script_code0 = textwrap.dedent('''\
     var map;
     var marker;
     var center = {
@@ -20,9 +20,24 @@ def make_map():
             center: center, // 地図の中心を指定
             zoom: 6 // 地図のズームを指定
         });
+    // pathのライン設定
+        var path_line = new google.maps.Polyline({
+            map: map,
+            path:[
+    ''')
+
+    script_code1 = textwrap.dedent('''\
+            ],
+            strokeColor: "rgb(0 ,51,204)", //線色(def:#000000)
+            strokeOpacity: 0.5, //透明度0～1(def:1)
+            strokeWeight: 5, //px指定（def:1)
+            zIndex: 1 //重なり順
+            }
+        );
     // 駅のマーカー設定
         var markers = [
-    ''')
+    '''
+                                   )
 
     script_code2 = textwrap.dedent('''\
         ];
@@ -51,9 +66,21 @@ def make_map():
     ''')
 
     with open(script_path, mode='w') as out:
+        out.write(script_code0)
+
+        # write path information
+        for i, sta in path_list.iterrows():
+            path_line = textwrap.dedent('''\
+            // {2}
+                        new google.maps.LatLng({0},{1}),
+            '''.format(round(sta['北緯'], 7), round(sta['東経'], 7), sta['駅名'], i))
+
+            out.write(path_line)
+
+
         out.write(script_code1)
 
-        # read station information
+        # write station information
         for i, sta in path_list.iterrows():
             station_marker = textwrap.dedent('''\
             // {2}
@@ -70,6 +97,5 @@ def make_map():
         out.write(script_code2)
 
     return 0
-
 
 make_map()

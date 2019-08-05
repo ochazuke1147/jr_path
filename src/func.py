@@ -14,9 +14,12 @@ class Timer:
 
 
 # 最長路を計算する関数
-def get_critical_path(graph_set, stations, weights, start, goal):
+def get_critical_path(graph_set, stations, weights, start, goal, critical_flag=False):
     goal_stations = []
     critical_path_lengths = []
+    # critical_flag=Trueの時のみpathを記憶しておく
+    critical_path_list = []
+
     for sta_num, sta_name in stations.items():
         if sta_num % 1000 == goal:
             goal_stations.append(sta_num)
@@ -51,7 +54,12 @@ def get_critical_path(graph_set, stations, weights, start, goal):
         # 10倍していた営業キロを計算後に1/10にして記憶
         critical_path_lengths.append(critical_path_length/10)
 
+        # critical_flag=Trueの時のみpathを記憶しておく
+        critical_path = []
+
         print(stations[current])
+        critical_path.append(current)
+
         while True:
             if current == goal_sta:
                 break
@@ -59,12 +67,23 @@ def get_critical_path(graph_set, stations, weights, start, goal):
                 if line[0] == current:
                     current = line[1]
                     print(stations[current])
+                    critical_path.append(current)
                     del max_path[i]
                     break
                 elif line[1] == current:
                     current = line[0]
                     print(stations[current])
+                    critical_path.append(current)
                     del max_path[i]
                     break
 
-    return critical_path_lengths
+        critical_path_list.append(critical_path)
+
+    # critical_flag=Trueの時はcritical_path_listを駅番号listで返す
+    if critical_flag:
+        max_path_length = max(critical_path_lengths)
+        print(max_path_length)
+        return critical_path_list[critical_path_lengths.index(max_path_length)]
+    # 通常時は最長路の距離のリストを返す
+    else:
+        return critical_path_lengths
