@@ -77,7 +77,6 @@ def make_map():
 
             out.write(path_line)
 
-
         out.write(script_code1)
 
         # write station information

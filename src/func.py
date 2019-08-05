@@ -14,7 +14,7 @@ class Timer:
 
 
 # 最長路を計算する関数
-def get_critical_path(graph_set, stations, weights, start, goal, critical_flag=False):
+def get_critical_path(graph_set, stations, weights, line_names, start, goal, critical_flag=False):
     goal_stations = []
     critical_path_lengths = []
     # critical_flag=Trueの時のみpathを記憶しておく
@@ -54,28 +54,38 @@ def get_critical_path(graph_set, stations, weights, start, goal, critical_flag=F
         # 10倍していた営業キロを計算後に1/10にして記憶
         critical_path_lengths.append(critical_path_length/10)
 
-        # critical_flag=Trueの時のみpathを記憶しておく
-        critical_path = []
-
+        # pathを記憶しておく
+        critical_path = [current]
         print(stations[current])
-        critical_path.append(current)
+        result_path = './map/result.txt'
 
-        while True:
-            if current == goal_sta:
-                break
-            for i, line in enumerate(max_path):
-                if line[0] == current:
-                    current = line[1]
-                    print(stations[current])
-                    critical_path.append(current)
-                    del max_path[i]
+        with open(result_path, mode='w') as out:
+            if critical_flag:
+                out.write(stations[current])
+            while True:
+                if current == goal_sta:
                     break
-                elif line[1] == current:
-                    current = line[0]
-                    print(stations[current])
-                    critical_path.append(current)
-                    del max_path[i]
-                    break
+                for i, line in enumerate(max_path):
+                    if line[0] == current:
+                        if critical_flag:
+                            out.write(line_names[line])
+                        current = line[1]
+                        print(stations[current], i)
+                        if critical_flag:
+                            out.write(stations[current])
+                        critical_path.append(current)
+                        del max_path[i]
+                        break
+                    elif line[1] == current:
+                        if critical_flag:
+                            out.write(line_names[line])
+                        current = line[0]
+                        print(stations[current])
+                        if critical_flag:
+                            out.write(stations[current])
+                        critical_path.append(current)
+                        del max_path[i]
+                        break
 
         critical_path_list.append(critical_path)
 
