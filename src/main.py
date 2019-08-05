@@ -48,7 +48,7 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 5
+max_sta_num = 94
 
 timer1 = Timer()
 
