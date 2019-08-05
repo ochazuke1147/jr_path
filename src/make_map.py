@@ -50,7 +50,7 @@ def make_map():
                     fillColor: m.color, //塗り潰し色
                     fillOpacity: 0.8, //塗り潰し透過率
                     path: google.maps.SymbolPath.CIRCLE, //円を指定
-                    scale: 16, //円のサイズ
+                    scale: 8, //円のサイズ
                     strokeColor: m.color, //枠の色
                     strokeWeight: 1.0 //枠の透過率
                 },
@@ -58,7 +58,7 @@ def make_map():
                 label: {
                     text: m.label_text, //ラベル文字
                     color: '#FFFFFF', //文字の色
-                    fontSize: '20px' //文字のサイズ
+                    fontSize: '10px' //文字のサイズ
                 }
             });
         }
@@ -96,5 +96,6 @@ def make_map():
         out.write(script_code2)
 
     return 0
+
 
 make_map()

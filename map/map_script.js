@@ -1,686 +1,686 @@
 var map;
 var marker;
 var center = {
-    lat: 35.170694, // ˆÜ“x
-    lng: 136.881637 // Œo“x
+    lat: 35.170694, // ç·¯åº¦
+    lng: 136.881637 // çµŒåº¦
 };
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('sample'), {
-        center: center, // ’n}‚Ì’†S‚ğw’è
-        zoom: 6 // ’n}‚ÌƒY[ƒ€‚ğw’è
+        center: center, // åœ°å›³ã®ä¸­å¿ƒã‚’æŒ‡å®š
+        zoom: 6 // åœ°å›³ã®ã‚ºãƒ¼ãƒ ã‚’æŒ‡å®š
     });
-// path‚Ìƒ‰ƒCƒ“İ’è
+// pathã®ãƒ©ã‚¤ãƒ³è¨­å®š
     var path_line = new google.maps.Polyline({
         map: map,
         path:[
-// ’¼]’Ã
+// ç›´æ±Ÿæ´¥
             new google.maps.LatLng(37.1702506,138.242039),
-// ”è
+// æŸå´
             new google.maps.LatLng(37.3637096,138.5562887),
-// ‹g“c
+// å‰ç”°
             new google.maps.LatLng(37.6871131,138.8786033),
-// VŠƒ
+// æ–°æ½Ÿ
             new google.maps.LatLng(37.91209,139.0617442),
-// V”­“c
+// æ–°ç™ºç”°
             new google.maps.LatLng(37.9440569,139.3350935),
-// V’Ã
+// æ–°æ´¥
             new google.maps.LatLng(37.8004686,139.1212473),
-// “ŒOğ
+// æ±ä¸‰æ¡
             new google.maps.LatLng(37.6285143,138.9736524),
-// ‹{“à
+// å®®å†…
             new google.maps.LatLng(37.4220999,138.8402313),
-// aì
+// æ¸‹å·
             new google.maps.LatLng(36.4913158,139.0088),
-// V‘O‹´
+// æ–°å‰æ©‹
             new google.maps.LatLng(36.379033,139.0469116),
-// ¬R
+// å°å±±
             new google.maps.LatLng(36.3128947,139.8064972),
-// ‘å‹{
+// å¤§å®®
             new google.maps.LatLng(35.9063453,139.6231198),
-// •‘ ‰Y˜a
+// æ­¦è”µæµ¦å’Œ
             new google.maps.LatLng(35.845352,139.6468681),
-// ¼‘•ª›
+// è¥¿å›½åˆ†å¯º
             new google.maps.LatLng(35.6997996,139.4657707),
-// Vh
+// æ–°å®¿
             new google.maps.LatLng(35.6894597,139.700537),
-// ’r‘Ü
+// æ± è¢‹
             new google.maps.LatLng(35.729487,139.7109997),
-// “c’[
+// ç”°ç«¯
             new google.maps.LatLng(35.7383571,139.7607333),
-// Ô‰H
+// èµ¤ç¾½
             new google.maps.LatLng(35.7776795,139.7209883),
-// “ì‰Y˜a
+// å—æµ¦å’Œ
             new google.maps.LatLng(35.8481784,139.6687818),
-// V¼ŒË
+// æ–°æ¾æˆ¸
             new google.maps.LatLng(35.8255382,139.9211025),
-// “ú•é—¢
+// æ—¥æš®é‡Œ
             new google.maps.LatLng(35.7281575,139.770638),
-// H—tŒ´
+// ç§‹è‘‰åŸ
             new google.maps.LatLng(35.698362,139.7733021),
-// ‹Ñ…’¬
+// éŒ¦ç³¸ç”º
             new google.maps.LatLng(35.6971445,139.81384),
-// ¼‘D‹´
+// è¥¿èˆ¹æ©‹
             new google.maps.LatLng(35.7074664,139.9590826),
-// ç—t
+// åƒè‘‰
             new google.maps.LatLng(35.6129299,140.1134652),
-// ²‘q
+// ä½å€‰
             new google.maps.LatLng(35.7095572,140.2259731),
-// ¬“c
+// æˆç”°
             new google.maps.LatLng(35.7773313,140.3135312),
-// æ
+// é¦™å–
             new google.maps.LatLng(35.8979327,140.5322812),
-// ¼è
+// æ¾å´
             new google.maps.LatLng(35.7395434,140.7952883),
-// ¬“Œ
+// æˆæ±
             new google.maps.LatLng(35.6083855,140.4108524),
-// ‘å–Ô
+// å¤§ç¶²
             new google.maps.LatLng(35.522508,140.3110421),
-// ‘å–Ô(ŠO–[E“à–[ü)
+// å¤§ç¶²(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)
             new google.maps.LatLng(35.522508,140.3110421),
-// ‘h‰ä(ŠO–[E“à–[ü)
+// è˜‡æˆ‘(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)
             new google.maps.LatLng(35.5815282,140.1310471),
-// ‘h‰ä
+// è˜‡æˆ‘
             new google.maps.LatLng(35.5815282,140.1310471),
-// “ì‘D‹´
+// å—èˆ¹æ©‹
             new google.maps.LatLng(35.6817774,139.9958289),
-// sì‰–•l
+// å¸‚å·å¡©æµœ
             new google.maps.LatLng(35.6664838,139.9236774),
-// “Œ‹
+// æ±äº¬
             new google.maps.LatLng(35.6811957,139.767251),
-// _“c
+// ç¥ç”°
             new google.maps.LatLng(35.6918216,139.770935),
-// Œä’ƒƒm…
+// å¾¡èŒ¶ãƒæ°´
             new google.maps.LatLng(35.6994603,139.7652079),
-// ‘ãX–Ø
+// ä»£ã€…æœ¨
             new google.maps.LatLng(35.6841068,139.7021759),
-// •iì
+// å“å·
             new google.maps.LatLng(35.6284888,139.7387767),
-// ìè
+// å·å´
             new google.maps.LatLng(35.5313531,139.6968913),
-// Kè
+// å°»æ‰‹
             new google.maps.LatLng(35.5315627,139.6842527),
-// •lìè
+// æµœå·å´
             new google.maps.LatLng(35.5102298,139.7138483),
-// •‘ ”’Î
+// æ­¦è”µç™½çŸ³
             new google.maps.LatLng(35.5018366,139.7064453),
-// ó–ì
+// æµ…é‡
             new google.maps.LatLng(35.4976003,139.6956468),
-// ’ßŒ©
+// é¶´è¦‹
             new google.maps.LatLng(35.5082528,139.6763195),
-// •‘ ¬™
+// æ­¦è”µå°æ‰
             new google.maps.LatLng(35.5766373,139.6594584),
-// •{’†–{’¬
+// åºœä¸­æœ¬ç”º
             new google.maps.LatLng(35.6661875,139.4772291),
-// —§ì
+// ç«‹å·
             new google.maps.LatLng(35.6982051,139.4137788),
-// ”q“‡
+// æ‹å³¶
             new google.maps.LatLng(35.7210899,139.343634),
-// ”ª‰¤q
+// å…«ç‹å­
             new google.maps.LatLng(35.6556399,139.3388915),
-// ‹´–{
+// æ©‹æœ¬
             new google.maps.LatLng(35.5949215,139.3450528),
-// “Œ_“Şì
+// æ±ç¥å¥ˆå·
             new google.maps.LatLng(35.4779787,139.6333869),
-// ‰¡•l
+// æ¨ªæµœ
             new google.maps.LatLng(35.4657885,139.6223299),
-// ‰¡•l(ªŠİü)
+// æ¨ªæµœ(æ ¹å²¸ç·š)
             new google.maps.LatLng(35.4657885,139.6223299),
-// ‘å‘D(ªŠİü)
+// å¤§èˆ¹(æ ¹å²¸ç·š)
             new google.maps.LatLng(35.3544937,139.5315814),
-// ‘å‘D
+// å¤§èˆ¹
             new google.maps.LatLng(35.3544937,139.5315814),
-// Šƒ–è
+// èŒ…ãƒ¶å´
             new google.maps.LatLng(35.3303085,139.406848),
-// ‘•{’Ã
+// å›½åºœæ´¥
             new google.maps.LatLng(35.2813605,139.214952),
-// À’Ã
+// æ²¼æ´¥
             new google.maps.LatLng(35.1026012,138.8597631),
-// •xm
+// å¯Œå£«
             new google.maps.LatLng(35.151486,138.6511946),
-// b•{
+// ç”²åºœ
             new google.maps.LatLng(35.6670765,138.5690546),
-// ‰ª’J
+// å²¡è°·
             new google.maps.LatLng(36.0570347,138.0453799),
-// ’C–ì
+// è¾°é‡
             new google.maps.LatLng(35.9845957,137.9978725),
-// –L‹´
+// è±Šæ©‹
             new google.maps.LatLng(34.7629304,137.381926),
-// ‘å•{
+// å¤§åºœ
             new google.maps.LatLng(35.0088341,136.9620734),
-// ‹àR
+// é‡‘å±±
             new google.maps.LatLng(35.1429282,136.9012195),
-// ‰–K
+// å¡©å°»
             new google.maps.LatLng(36.1143387,137.9481023),
-// ¼–{
+// æ¾æœ¬
             new google.maps.LatLng(36.2308211,137.9643505),
-// “ì¬’J
+// å—å°è°·
             new google.maps.LatLng(36.7748831,137.9082227),
         ],
-        strokeColor: "rgb(0 ,51,204)", //üF(def:#000000)
-        strokeOpacity: 0.5, //“§–¾“x0`1(def:1)
-        strokeWeight: 5, //pxw’èidef:1)
-        zIndex: 1 //d‚È‚è‡
+        strokeColor: "rgb(0 ,51,204)", //ç·šè‰²(def:#000000)
+        strokeOpacity: 0.5, //é€æ˜åº¦0ï½1(def:1)
+        strokeWeight: 5, //pxæŒ‡å®šï¼ˆdef:1)
+        zIndex: 1 //é‡ãªã‚Šé †
         }
     );
-// ‰w‚Ìƒ}[ƒJ[İ’è
+// é§…ã®ãƒãƒ¼ã‚«ãƒ¼è¨­å®š
     var markers = [
-// ’¼]’Ã
+// ç›´æ±Ÿæ´¥
         {
             position : { lat: 37.1702506, lng: 138.242039 },
-            title: "’¼]’Ã",
+            title: "ç›´æ±Ÿæ´¥",
             label_text: "0",
             color: "blue"
         },
-// ”è
+// æŸå´
         {
             position : { lat: 37.3637096, lng: 138.5562887 },
-            title: "”è",
+            title: "æŸå´",
             label_text: "1",
             color: "blue"
         },
-// ‹g“c
+// å‰ç”°
         {
             position : { lat: 37.6871131, lng: 138.8786033 },
-            title: "‹g“c",
+            title: "å‰ç”°",
             label_text: "2",
             color: "blue"
         },
-// VŠƒ
+// æ–°æ½Ÿ
         {
             position : { lat: 37.91209, lng: 139.0617442 },
-            title: "VŠƒ",
+            title: "æ–°æ½Ÿ",
             label_text: "3",
             color: "blue"
         },
-// V”­“c
+// æ–°ç™ºç”°
         {
             position : { lat: 37.9440569, lng: 139.3350935 },
-            title: "V”­“c",
+            title: "æ–°ç™ºç”°",
             label_text: "4",
             color: "blue"
         },
-// V’Ã
+// æ–°æ´¥
         {
             position : { lat: 37.8004686, lng: 139.1212473 },
-            title: "V’Ã",
+            title: "æ–°æ´¥",
             label_text: "5",
             color: "blue"
         },
-// “ŒOğ
+// æ±ä¸‰æ¡
         {
             position : { lat: 37.6285143, lng: 138.9736524 },
-            title: "“ŒOğ",
+            title: "æ±ä¸‰æ¡",
             label_text: "6",
             color: "blue"
         },
-// ‹{“à
+// å®®å†…
         {
             position : { lat: 37.4220999, lng: 138.8402313 },
-            title: "‹{“à",
+            title: "å®®å†…",
             label_text: "7",
             color: "blue"
         },
-// aì
+// æ¸‹å·
         {
             position : { lat: 36.4913158, lng: 139.0088 },
-            title: "aì",
+            title: "æ¸‹å·",
             label_text: "8",
             color: "blue"
         },
-// V‘O‹´
+// æ–°å‰æ©‹
         {
             position : { lat: 36.379033, lng: 139.0469116 },
-            title: "V‘O‹´",
+            title: "æ–°å‰æ©‹",
             label_text: "9",
             color: "blue"
         },
-// ¬R
+// å°å±±
         {
             position : { lat: 36.3128947, lng: 139.8064972 },
-            title: "¬R",
+            title: "å°å±±",
             label_text: "10",
             color: "blue"
         },
-// ‘å‹{
+// å¤§å®®
         {
             position : { lat: 35.9063453, lng: 139.6231198 },
-            title: "‘å‹{",
+            title: "å¤§å®®",
             label_text: "11",
             color: "blue"
         },
-// •‘ ‰Y˜a
+// æ­¦è”µæµ¦å’Œ
         {
             position : { lat: 35.845352, lng: 139.6468681 },
-            title: "•‘ ‰Y˜a",
+            title: "æ­¦è”µæµ¦å’Œ",
             label_text: "12",
             color: "blue"
         },
-// ¼‘•ª›
+// è¥¿å›½åˆ†å¯º
         {
             position : { lat: 35.6997996, lng: 139.4657707 },
-            title: "¼‘•ª›",
+            title: "è¥¿å›½åˆ†å¯º",
             label_text: "13",
             color: "blue"
         },
-// Vh
+// æ–°å®¿
         {
             position : { lat: 35.6894597, lng: 139.700537 },
-            title: "Vh",
+            title: "æ–°å®¿",
             label_text: "14",
             color: "blue"
         },
-// ’r‘Ü
+// æ± è¢‹
         {
             position : { lat: 35.729487, lng: 139.7109997 },
-            title: "’r‘Ü",
+            title: "æ± è¢‹",
             label_text: "15",
             color: "blue"
         },
-// “c’[
+// ç”°ç«¯
         {
             position : { lat: 35.7383571, lng: 139.7607333 },
-            title: "“c’[",
+            title: "ç”°ç«¯",
             label_text: "16",
             color: "blue"
         },
-// Ô‰H
+// èµ¤ç¾½
         {
             position : { lat: 35.7776795, lng: 139.7209883 },
-            title: "Ô‰H",
+            title: "èµ¤ç¾½",
             label_text: "17",
             color: "blue"
         },
-// “ì‰Y˜a
+// å—æµ¦å’Œ
         {
             position : { lat: 35.8481784, lng: 139.6687818 },
-            title: "“ì‰Y˜a",
+            title: "å—æµ¦å’Œ",
             label_text: "18",
             color: "blue"
         },
-// V¼ŒË
+// æ–°æ¾æˆ¸
         {
             position : { lat: 35.8255382, lng: 139.9211025 },
-            title: "V¼ŒË",
+            title: "æ–°æ¾æˆ¸",
             label_text: "19",
             color: "blue"
         },
-// “ú•é—¢
+// æ—¥æš®é‡Œ
         {
             position : { lat: 35.7281575, lng: 139.770638 },
-            title: "“ú•é—¢",
+            title: "æ—¥æš®é‡Œ",
             label_text: "20",
             color: "blue"
         },
-// H—tŒ´
+// ç§‹è‘‰åŸ
         {
             position : { lat: 35.698362, lng: 139.7733021 },
-            title: "H—tŒ´",
+            title: "ç§‹è‘‰åŸ",
             label_text: "21",
             color: "blue"
         },
-// ‹Ñ…’¬
+// éŒ¦ç³¸ç”º
         {
             position : { lat: 35.6971445, lng: 139.81384 },
-            title: "‹Ñ…’¬",
+            title: "éŒ¦ç³¸ç”º",
             label_text: "22",
             color: "blue"
         },
-// ¼‘D‹´
+// è¥¿èˆ¹æ©‹
         {
             position : { lat: 35.7074664, lng: 139.9590826 },
-            title: "¼‘D‹´",
+            title: "è¥¿èˆ¹æ©‹",
             label_text: "23",
             color: "blue"
         },
-// ç—t
+// åƒè‘‰
         {
             position : { lat: 35.6129299, lng: 140.1134652 },
-            title: "ç—t",
+            title: "åƒè‘‰",
             label_text: "24",
             color: "blue"
         },
-// ²‘q
+// ä½å€‰
         {
             position : { lat: 35.7095572, lng: 140.2259731 },
-            title: "²‘q",
+            title: "ä½å€‰",
             label_text: "25",
             color: "blue"
         },
-// ¬“c
+// æˆç”°
         {
             position : { lat: 35.7773313, lng: 140.3135312 },
-            title: "¬“c",
+            title: "æˆç”°",
             label_text: "26",
             color: "blue"
         },
-// æ
+// é¦™å–
         {
             position : { lat: 35.8979327, lng: 140.5322812 },
-            title: "æ",
+            title: "é¦™å–",
             label_text: "27",
             color: "blue"
         },
-// ¼è
+// æ¾å´
         {
             position : { lat: 35.7395434, lng: 140.7952883 },
-            title: "¼è",
+            title: "æ¾å´",
             label_text: "28",
             color: "blue"
         },
-// ¬“Œ
+// æˆæ±
         {
             position : { lat: 35.6083855, lng: 140.4108524 },
-            title: "¬“Œ",
+            title: "æˆæ±",
             label_text: "29",
             color: "blue"
         },
-// ‘å–Ô
+// å¤§ç¶²
         {
             position : { lat: 35.522508, lng: 140.3110421 },
-            title: "‘å–Ô",
+            title: "å¤§ç¶²",
             label_text: "30",
             color: "blue"
         },
-// ‘å–Ô(ŠO–[E“à–[ü)
+// å¤§ç¶²(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)
         {
             position : { lat: 35.522508, lng: 140.3110421 },
-            title: "‘å–Ô(ŠO–[E“à–[ü)",
+            title: "å¤§ç¶²(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)",
             label_text: "31",
             color: "blue"
         },
-// ‘h‰ä(ŠO–[E“à–[ü)
+// è˜‡æˆ‘(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)
         {
             position : { lat: 35.5815282, lng: 140.1310471 },
-            title: "‘h‰ä(ŠO–[E“à–[ü)",
+            title: "è˜‡æˆ‘(å¤–æˆ¿ãƒ»å†…æˆ¿ç·š)",
             label_text: "32",
             color: "blue"
         },
-// ‘h‰ä
+// è˜‡æˆ‘
         {
             position : { lat: 35.5815282, lng: 140.1310471 },
-            title: "‘h‰ä",
+            title: "è˜‡æˆ‘",
             label_text: "33",
             color: "blue"
         },
-// “ì‘D‹´
+// å—èˆ¹æ©‹
         {
             position : { lat: 35.6817774, lng: 139.9958289 },
-            title: "“ì‘D‹´",
+            title: "å—èˆ¹æ©‹",
             label_text: "34",
             color: "blue"
         },
-// sì‰–•l
+// å¸‚å·å¡©æµœ
         {
             position : { lat: 35.6664838, lng: 139.9236774 },
-            title: "sì‰–•l",
+            title: "å¸‚å·å¡©æµœ",
             label_text: "35",
             color: "blue"
         },
-// “Œ‹
+// æ±äº¬
         {
             position : { lat: 35.6811957, lng: 139.767251 },
-            title: "“Œ‹",
+            title: "æ±äº¬",
             label_text: "36",
             color: "blue"
         },
-// _“c
+// ç¥ç”°
         {
             position : { lat: 35.6918216, lng: 139.770935 },
-            title: "_“c",
+            title: "ç¥ç”°",
             label_text: "37",
             color: "blue"
         },
-// Œä’ƒƒm…
+// å¾¡èŒ¶ãƒæ°´
         {
             position : { lat: 35.6994603, lng: 139.7652079 },
-            title: "Œä’ƒƒm…",
+            title: "å¾¡èŒ¶ãƒæ°´",
             label_text: "38",
             color: "blue"
         },
-// ‘ãX–Ø
+// ä»£ã€…æœ¨
         {
             position : { lat: 35.6841068, lng: 139.7021759 },
-            title: "‘ãX–Ø",
+            title: "ä»£ã€…æœ¨",
             label_text: "39",
             color: "blue"
         },
-// •iì
+// å“å·
         {
             position : { lat: 35.6284888, lng: 139.7387767 },
-            title: "•iì",
+            title: "å“å·",
             label_text: "40",
             color: "blue"
         },
-// ìè
+// å·å´
         {
             position : { lat: 35.5313531, lng: 139.6968913 },
-            title: "ìè",
+            title: "å·å´",
             label_text: "41",
             color: "blue"
         },
-// Kè
+// å°»æ‰‹
         {
             position : { lat: 35.5315627, lng: 139.6842527 },
-            title: "Kè",
+            title: "å°»æ‰‹",
             label_text: "42",
             color: "blue"
         },
-// •lìè
+// æµœå·å´
         {
             position : { lat: 35.5102298, lng: 139.7138483 },
-            title: "•lìè",
+            title: "æµœå·å´",
             label_text: "43",
             color: "blue"
         },
-// •‘ ”’Î
+// æ­¦è”µç™½çŸ³
         {
             position : { lat: 35.5018366, lng: 139.7064453 },
-            title: "•‘ ”’Î",
+            title: "æ­¦è”µç™½çŸ³",
             label_text: "44",
             color: "blue"
         },
-// ó–ì
+// æµ…é‡
         {
             position : { lat: 35.4976003, lng: 139.6956468 },
-            title: "ó–ì",
+            title: "æµ…é‡",
             label_text: "45",
             color: "blue"
         },
-// ’ßŒ©
+// é¶´è¦‹
         {
             position : { lat: 35.5082528, lng: 139.6763195 },
-            title: "’ßŒ©",
+            title: "é¶´è¦‹",
             label_text: "46",
             color: "blue"
         },
-// •‘ ¬™
+// æ­¦è”µå°æ‰
         {
             position : { lat: 35.5766373, lng: 139.6594584 },
-            title: "•‘ ¬™",
+            title: "æ­¦è”µå°æ‰",
             label_text: "47",
             color: "blue"
         },
-// •{’†–{’¬
+// åºœä¸­æœ¬ç”º
         {
             position : { lat: 35.6661875, lng: 139.4772291 },
-            title: "•{’†–{’¬",
+            title: "åºœä¸­æœ¬ç”º",
             label_text: "48",
             color: "blue"
         },
-// —§ì
+// ç«‹å·
         {
             position : { lat: 35.6982051, lng: 139.4137788 },
-            title: "—§ì",
+            title: "ç«‹å·",
             label_text: "49",
             color: "blue"
         },
-// ”q“‡
+// æ‹å³¶
         {
             position : { lat: 35.7210899, lng: 139.343634 },
-            title: "”q“‡",
+            title: "æ‹å³¶",
             label_text: "50",
             color: "blue"
         },
-// ”ª‰¤q
+// å…«ç‹å­
         {
             position : { lat: 35.6556399, lng: 139.3388915 },
-            title: "”ª‰¤q",
+            title: "å…«ç‹å­",
             label_text: "51",
             color: "blue"
         },
-// ‹´–{
+// æ©‹æœ¬
         {
             position : { lat: 35.5949215, lng: 139.3450528 },
-            title: "‹´–{",
+            title: "æ©‹æœ¬",
             label_text: "52",
             color: "blue"
         },
-// “Œ_“Şì
+// æ±ç¥å¥ˆå·
         {
             position : { lat: 35.4779787, lng: 139.6333869 },
-            title: "“Œ_“Şì",
+            title: "æ±ç¥å¥ˆå·",
             label_text: "53",
             color: "blue"
         },
-// ‰¡•l
+// æ¨ªæµœ
         {
             position : { lat: 35.4657885, lng: 139.6223299 },
-            title: "‰¡•l",
+            title: "æ¨ªæµœ",
             label_text: "54",
             color: "blue"
         },
-// ‰¡•l(ªŠİü)
+// æ¨ªæµœ(æ ¹å²¸ç·š)
         {
             position : { lat: 35.4657885, lng: 139.6223299 },
-            title: "‰¡•l(ªŠİü)",
+            title: "æ¨ªæµœ(æ ¹å²¸ç·š)",
             label_text: "55",
             color: "blue"
         },
-// ‘å‘D(ªŠİü)
+// å¤§èˆ¹(æ ¹å²¸ç·š)
         {
             position : { lat: 35.3544937, lng: 139.5315814 },
-            title: "‘å‘D(ªŠİü)",
+            title: "å¤§èˆ¹(æ ¹å²¸ç·š)",
             label_text: "56",
             color: "blue"
         },
-// ‘å‘D
+// å¤§èˆ¹
         {
             position : { lat: 35.3544937, lng: 139.5315814 },
-            title: "‘å‘D",
+            title: "å¤§èˆ¹",
             label_text: "57",
             color: "blue"
         },
-// Šƒ–è
+// èŒ…ãƒ¶å´
         {
             position : { lat: 35.3303085, lng: 139.406848 },
-            title: "Šƒ–è",
+            title: "èŒ…ãƒ¶å´",
             label_text: "58",
             color: "blue"
         },
-// ‘•{’Ã
+// å›½åºœæ´¥
         {
             position : { lat: 35.2813605, lng: 139.214952 },
-            title: "‘•{’Ã",
+            title: "å›½åºœæ´¥",
             label_text: "59",
             color: "blue"
         },
-// À’Ã
+// æ²¼æ´¥
         {
             position : { lat: 35.1026012, lng: 138.8597631 },
-            title: "À’Ã",
+            title: "æ²¼æ´¥",
             label_text: "60",
             color: "blue"
         },
-// •xm
+// å¯Œå£«
         {
             position : { lat: 35.151486, lng: 138.6511946 },
-            title: "•xm",
+            title: "å¯Œå£«",
             label_text: "61",
             color: "blue"
         },
-// b•{
+// ç”²åºœ
         {
             position : { lat: 35.6670765, lng: 138.5690546 },
-            title: "b•{",
+            title: "ç”²åºœ",
             label_text: "62",
             color: "blue"
         },
-// ‰ª’J
+// å²¡è°·
         {
             position : { lat: 36.0570347, lng: 138.0453799 },
-            title: "‰ª’J",
+            title: "å²¡è°·",
             label_text: "63",
             color: "blue"
         },
-// ’C–ì
+// è¾°é‡
         {
             position : { lat: 35.9845957, lng: 137.9978725 },
-            title: "’C–ì",
+            title: "è¾°é‡",
             label_text: "64",
             color: "blue"
         },
-// –L‹´
+// è±Šæ©‹
         {
             position : { lat: 34.7629304, lng: 137.381926 },
-            title: "–L‹´",
+            title: "è±Šæ©‹",
             label_text: "65",
             color: "blue"
         },
-// ‘å•{
+// å¤§åºœ
         {
             position : { lat: 35.0088341, lng: 136.9620734 },
-            title: "‘å•{",
+            title: "å¤§åºœ",
             label_text: "66",
             color: "blue"
         },
-// ‹àR
+// é‡‘å±±
         {
             position : { lat: 35.1429282, lng: 136.9012195 },
-            title: "‹àR",
+            title: "é‡‘å±±",
             label_text: "67",
             color: "blue"
         },
-// ‰–K
+// å¡©å°»
         {
             position : { lat: 36.1143387, lng: 137.9481023 },
-            title: "‰–K",
+            title: "å¡©å°»",
             label_text: "68",
             color: "blue"
         },
-// ¼–{
+// æ¾æœ¬
         {
             position : { lat: 36.2308211, lng: 137.9643505 },
-            title: "¼–{",
+            title: "æ¾æœ¬",
             label_text: "69",
             color: "blue"
         },
-// “ì¬’J
+// å—å°è°·
         {
             position : { lat: 36.7748831, lng: 137.9082227 },
-            title: "“ì¬’J",
+            title: "å—å°è°·",
             label_text: "70",
             color: "blue"
         },
     ];
-// •¡”‚Ìƒ}[ƒJ[‚ğ”z’u
+// è¤‡æ•°ã®ãƒãƒ¼ã‚«ãƒ¼ã‚’é…ç½®
     for (var m of markers){
         var marker = new google.maps.Marker({
             map: map,
             position: m.position,
             icon: {
-                fillColor: m.color, //“h‚è’×‚µF
-                fillOpacity: 0.8, //“h‚è’×‚µ“§‰ß—¦
-                path: google.maps.SymbolPath.CIRCLE, //‰~‚ğw’è
-                scale: 16, //‰~‚ÌƒTƒCƒY
-                strokeColor: m.color, //˜g‚ÌF
-                strokeWeight: 1.0 //˜g‚Ì“§‰ß—¦
+                fillColor: m.color, //å¡—ã‚Šæ½°ã—è‰²
+                fillOpacity: 0.8, //å¡—ã‚Šæ½°ã—é€éç‡
+                path: google.maps.SymbolPath.CIRCLE, //å††ã‚’æŒ‡å®š
+                scale: 8, //å††ã®ã‚µã‚¤ã‚º
+                strokeColor: m.color, //æ ã®è‰²
+                strokeWeight: 1.0 //æ ã®é€éç‡
             },
             title: m.title,
             label: {
-                text: m.label_text, //ƒ‰ƒxƒ‹•¶š
-                color: '#FFFFFF', //•¶š‚ÌF
-                fontSize: '20px' //•¶š‚ÌƒTƒCƒY
+                text: m.label_text, //ãƒ©ãƒ™ãƒ«æ–‡å­—
+                color: '#FFFFFF', //æ–‡å­—ã®è‰²
+                fontSize: '10px' //æ–‡å­—ã®ã‚µã‚¤ã‚º
             }
         });
     }
