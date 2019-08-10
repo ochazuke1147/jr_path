@@ -48,17 +48,20 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 94
+max_sta_num = 10
 
 timer1 = Timer()
+timer2 = Timer()
 
 for current in range(min_sta_num, max_sta_num):
     for goal in range(min_sta_num, max_sta_num):
-        result = get_critical_path(gs, stations, weights,line_names, current, goal)
+        result = get_critical_path(gs, stations, weights, line_names, current, goal)
         print(result)
         if len(result) == 0:
             continue
         critical_path_lengths.setdefault((current, goal), max(result))
+        print(current, 'to', goal, ':', timer2.time_elapsed())
+        timer2.reset()
 
 whole_time = timer1.time_elapsed()
 print('whole_time:', whole_time)

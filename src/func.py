@@ -56,7 +56,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
 
         # pathを記憶しておく
         critical_path = [current]
-        print(stations[current])
+        # print(stations[current])
         result_path = './map/result.txt'
 
         with open(result_path, mode='w', encoding='utf-8') as out:
@@ -70,7 +70,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
                         if critical_flag:
                             out.write('[' + line_names[line] + ']')
                         current = line[1]
-                        print(stations[current])
+                        # print(stations[current])
                         if critical_flag:
                             out.write(stations[current])
                         critical_path.append(current)
@@ -80,7 +80,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
                         if critical_flag:
                             out.write('[' + line_names[line] + ']')
                         current = line[0]
-                        print(stations[current])
+                        # print(stations[current])
                         if critical_flag:
                             out.write(stations[current])
                         critical_path.append(current)
