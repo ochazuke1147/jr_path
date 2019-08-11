@@ -3,6 +3,7 @@ import pandas as pd
 from src.func import get_critical_path, Timer
 from src.make_map import make_map
 
+
 line_list = pd.read_csv('./route_data/route.csv', sep=',')
 station_list = pd.read_csv('./route_data/st.csv', sep=',')
 stations = {}
@@ -10,6 +11,7 @@ univ = []
 weights = {}
 line_names = {}
 path_list = './map/path_list.csv'
+critical_lengths_list = './map/critical_lengths.csv'
 
 # read station information
 for i, sta in station_list.iterrows():
@@ -48,20 +50,29 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 176
+max_sta_num = 10
 
 timer1 = Timer()
 timer2 = Timer()
 
-for current in range(min_sta_num, max_sta_num):
-    for goal in range(min_sta_num, max_sta_num):
-        result = get_critical_path(gs, stations, weights, line_names, current, goal)
-        print(result)
-        if len(result) == 0:
-            continue
-        critical_path_lengths.setdefault((current, goal), max(result))
-        print(current, 'to', goal, ':', timer2.time_elapsed())
-        timer2.reset()
+critical_lengths = []
+
+with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
+    for current in range(min_sta_num, max_sta_num):
+        for goal in range(min_sta_num, max_sta_num):
+            result = get_critical_path(gs, stations, weights, line_names, current, goal)
+            if len(result) == 0:
+                continue
+            critical_lengths.append((current, goal, max(result)))
+            critical_path_lengths.setdefault((current, goal), max(result))
+            print(current, 'to', goal, ':', timer2.time_elapsed())
+            timer2.reset()
+
+        print('elapsed time:', round(timer1.time_elapsed() / 60), '[minutes]')
+
+df = pd.DataFrame(critical_lengths, columns=['始発駅', '終着駅', '最長経路距離'])
+
+df.to_csv(critical_lengths_list, index=False)
 
 whole_time = timer1.time_elapsed()
 print('whole_time:', whole_time)

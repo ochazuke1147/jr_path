@@ -97,3 +97,4 @@ def make_map():
 
     return 0
 
+make_map()
