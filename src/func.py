@@ -73,7 +73,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
                         # print(stations[current])
                         if critical_flag:
                             out.write(stations[current])
-                        critical_path.append(current)
+                            critical_path.append(current)
                         del max_path[i]
                         break
                     elif line[1] == current:
@@ -83,11 +83,12 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
                         # print(stations[current])
                         if critical_flag:
                             out.write(stations[current])
-                        critical_path.append(current)
+                            critical_path.append(current)
                         del max_path[i]
                         break
 
-        critical_path_list.append(critical_path)
+        if critical_flag:
+            critical_path_list.append(critical_path)
 
     # critical_flag=Trueの時はcritical_path_listを駅番号listで返す
     if critical_flag:
