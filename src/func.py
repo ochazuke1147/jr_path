@@ -48,6 +48,9 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, cri
         if len(paths) == 0:
             continue
         max_path = next(paths.max_iter(weights))
+
+        del paths
+
         critical_path_length = 0
 
         for line in max_path:
