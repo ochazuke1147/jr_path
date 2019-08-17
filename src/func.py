@@ -15,7 +15,6 @@ class Timer:
 
 
 # 最長路を計算する関数
-@profile
 def get_critical_path(graph_set, stations, weights, line_names, start, goal, critical_flag=False):
     goal_stations = []
     critical_path_lengths = []

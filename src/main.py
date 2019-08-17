@@ -5,11 +5,12 @@ from src.make_map import make_map
 
 
 line_list = pd.read_csv('./route_data/route.csv', sep=',')
-station_list = pd.read_csv('./route_data/st.csv', sep=',')
+station_list = pd.read_csv('./route_data/st2.csv', sep=',')
 stations = {}
 univ = []
 weights = {}
 line_names = {}
+use_searches = {}
 path_list = './map/path_list.csv'
 critical_lengths_list = './map/critical_lengths.csv'
 
@@ -29,7 +30,6 @@ for i, line in line_list.iterrows():
     univ.append(edge)
     weights[edge] = length
     line_names[edge] = line_name
-
     dead_end_edge1 = (start_sta, route_num * 1000 + goal_sta)
     dead_end_edge2 = (route_num * 1000 + start_sta, goal_sta)
     univ.append(dead_end_edge1)
@@ -50,7 +50,7 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 10
+max_sta_num = 176
 
 timer1 = Timer()
 timer2 = Timer()
@@ -59,8 +59,15 @@ critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
     for current in range(min_sta_num, max_sta_num):
+        if not station_list.loc[current - 1]['use_search']:
+            print('skipped current: ', station_list.loc[current - 1]['駅名'])
+            continue
         for goal in range(min_sta_num, max_sta_num):
+            if not station_list.loc[goal - 1]['use_search']:
+                print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
+                continue
             result = get_critical_path(gs, stations, weights, line_names, current, goal)
+
             if len(result) == 0:
                 continue
             critical_lengths.append((current, goal, max(result)))
