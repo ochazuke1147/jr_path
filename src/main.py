@@ -58,11 +58,11 @@ timer2 = Timer()
 critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
-    for current in range(min_sta_num, max_sta_num):
+    for current in range(9, 10):
         if not station_list.loc[current - 1]['use_search']:
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
-        for goal in range(min_sta_num, max_sta_num):
+        for goal in range(157, 158):
             if not station_list.loc[goal - 1]['use_search']:
                 print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
                 continue
@@ -102,6 +102,8 @@ critical_path_stations = []
 
 for critical_path_sta in critical_path:
     sta_data = station_list.loc[(critical_path_sta-1) % 1000]
+    if not sta_data['use_search']:
+        continue
     critical_path_stations.append((sta_data['駅番号'], sta_data['駅名'], round(sta_data['東経'], 7), round(sta_data['北緯'], 7)))
     print(sta_data)
 
