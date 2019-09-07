@@ -14,18 +14,22 @@ class Timer:
         self.start = time.time()
 
 
+# TODO: typeBの最長経路がtypeLよりも低いことを確かめる
 # 最長路を計算する関数
 def get_critical_path(graph_set, stations, weights, line_names, start, goal, critical_flag=False):
+    start_stations = []
     goal_stations = []
     critical_path_lengths = []
     # critical_flag=Trueの時のみpathを記憶しておく
     critical_path_list = []
 
     for sta_num, sta_name in stations.items():
+        if sta_num % 1000 == start:
+            start_stations.append(sta_num)
         if sta_num % 1000 == goal:
             goal_stations.append(sta_num)
 
-    # print(goal_stations)
+    print(start_stations)
     for goal_sta in goal_stations:
         current = start
         paths = graph_set.paths(current, goal_sta)

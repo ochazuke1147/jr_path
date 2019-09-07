@@ -50,7 +50,7 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 176
+max_sta_num = 10
 
 timer1 = Timer()
 timer2 = Timer()
@@ -58,11 +58,11 @@ timer2 = Timer()
 critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
-    for current in range(9, 10):
+    for current in range(min_sta_num, max_sta_num):
         if not station_list.loc[current - 1]['use_search']:
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
-        for goal in range(157, 158):
+        for goal in range(min_sta_num, max_sta_num):
             if not station_list.loc[goal - 1]['use_search']:
                 print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
                 continue
