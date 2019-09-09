@@ -10,7 +10,6 @@ stations = {}
 univ = []
 weights = {}
 line_names = {}
-#use_searches = {}
 path_list = './map/path_list.csv'
 critical_lengths_list = './map/critical_lengths.csv'
 
