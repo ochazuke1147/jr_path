@@ -49,8 +49,8 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 11
-path_type = 'L'
+max_sta_num = 176
+path_type = 'B'
 
 timer1 = Timer()
 timer2 = Timer()
@@ -62,12 +62,21 @@ with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
         if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
+        if path_type == 'P' and station_list.loc[current - 1]['sta_type'] != 'T':
+            print('skipped current: ', station_list.loc[current - 1]['駅名'])
+            continue
+        if path_type == 'B' and station_list.loc[current - 1]['sta_type'] != 'J':
+            print('skipped current: ', station_list.loc[current - 1]['駅名'])
+            continue
         if not station_list.loc[current - 1]['use_search']:
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
         for goal in range(min_sta_num, max_sta_num):
-            if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
-                print('skipped current: ', station_list.loc[current - 1]['駅名'])
+            if path_type == 'L' and station_list.loc[goal - 1]['sta_type'] != 'T':
+                print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
+                continue
+            if path_type == 'B' and station_list.loc[goal - 1]['sta_type'] != 'J':
+                print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
                 continue
             if not station_list.loc[goal - 1]['use_search']:
                 print('skipped goal: ', station_list.loc[goal - 1]['駅名'])

@@ -33,7 +33,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
     if path_type != 'B':
         start_stations.append(start)
 
-    print(start_stations)
+    print(start_stations, goal_stations)
 
     for start_sta in start_stations:
         for goal_sta in goal_stations:
