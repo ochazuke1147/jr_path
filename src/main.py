@@ -10,7 +10,7 @@ stations = {}
 univ = []
 weights = {}
 line_names = {}
-use_searches = {}
+#use_searches = {}
 path_list = './map/path_list.csv'
 critical_lengths_list = './map/critical_lengths.csv'
 
@@ -50,7 +50,8 @@ print(weights)
 critical_path_lengths = {}
 
 min_sta_num = 1
-max_sta_num = 10
+max_sta_num = 11
+path_type = 'L'
 
 timer1 = Timer()
 timer2 = Timer()
@@ -59,14 +60,20 @@ critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
     for current in range(min_sta_num, max_sta_num):
+        if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
+            print('skipped current: ', station_list.loc[current - 1]['駅名'])
+            continue
         if not station_list.loc[current - 1]['use_search']:
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
         for goal in range(min_sta_num, max_sta_num):
+            if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
+                print('skipped current: ', station_list.loc[current - 1]['駅名'])
+                continue
             if not station_list.loc[goal - 1]['use_search']:
                 print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
                 continue
-            result = get_critical_path(gs, stations, weights, line_names, current, goal)
+            result = get_critical_path(gs, stations, weights, line_names, current, goal, path_type)
 
             if len(result) == 0:
                 continue
@@ -92,8 +99,8 @@ print(sorted_critical_path_lengths)
 
 critical_path_start_sta, critical_path_goal_sta = sorted_critical_path_lengths[0][0]
 
-critical_path = get_critical_path(gs, stations, weights, line_names,
-                                  critical_path_start_sta, critical_path_goal_sta, critical_flag=True)
+critical_path = get_critical_path(gs, stations, weights, line_names, critical_path_start_sta,
+                                  critical_path_goal_sta, path_type, critical_flag=True)
 
 print(critical_path)
 
