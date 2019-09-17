@@ -65,7 +65,7 @@ def make_map():
     }
     ''')
 
-    with open(script_path, mode='w') as out:
+    with open(script_path, mode='w', encoding='utf-8') as out:
         out.write(script_code0)
 
         # write path information
