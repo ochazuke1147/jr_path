@@ -28,7 +28,10 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
         # Pnタイプの経路の上界を求めるために使用
         if path_type == 'B' and sta_num > 1000 and sta_num % 1000 == start:
             start_stations.append(sta_num)
-        if sta_num % 1000 == goal:
+        if path_type == 'B' and sta_num > 1000 and sta_num % 1000 == goal:
+            goal_stations.append(sta_num)
+            continue
+        if path_type != 'B' and sta_num % 1000 == goal:
             goal_stations.append(sta_num)
     if path_type != 'B':
         start_stations.append(start)
@@ -40,7 +43,11 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
             current = start_sta
             paths = graph_set.paths(current, goal_sta)
 
+            if path_type == 'B':
+                paths = paths.including(current % 1000).including(goal_sta % 1000)
+
             next_stations = []
+            next_stations2 = []
 
             for w in weights:
                 if goal_sta in w:
@@ -48,9 +55,19 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
                         next_stations.append(w[1])
                     else:
                         next_stations.append(w[0])
+                if start_sta in w:
+                    if w[0] == start_sta:
+                        next_stations2.append(w[1])
+                    else:
+                        next_stations2.append(w[0])
 
             if len(next_stations) == 1:
                 paths -= paths.including((next_stations[0], goal_sta % 1000)).including((goal_sta, next_stations[0]))
+
+            print(next_stations2)
+            # TODO: 開始地点で重複行き来してしまうのを防ぐ
+            if len(next_stations2) == 1:
+                paths -= paths.including((start_sta, next_stations2[0])).including((next_stations2[0], start_sta % 1000))
 
             # print(len(paths), current, goal_sta)
 
@@ -97,7 +114,7 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
                                 del max_path[i]
                                 break
             else:
-                while True:
+                while False:
                     if current == goal_sta:
                         break
                     for i, line in enumerate(max_path):
@@ -114,7 +131,6 @@ def get_critical_path(graph_set, stations, weights, line_names, start, goal, pat
 
             if critical_flag:
                 critical_path_list.append(critical_path)
-
 
     # critical_flag=Trueの時はcritical_path_listを駅番号listで返す
     if critical_flag:

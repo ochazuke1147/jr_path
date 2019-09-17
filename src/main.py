@@ -11,7 +11,7 @@ univ = []
 weights = {}
 line_names = {}
 path_list = './map/path_list.csv'
-critical_lengths_list = './map/critical_lengths.csv'
+critical_lengths_list = './map/critical_lengths(type-B).csv'
 
 # read station information
 for i, sta in station_list.iterrows():
@@ -50,7 +50,7 @@ critical_path_lengths = {}
 
 min_sta_num = 1
 max_sta_num = 176
-path_type = 'B'
+path_type = 'I'
 
 timer1 = Timer()
 timer2 = Timer()
@@ -58,7 +58,7 @@ timer2 = Timer()
 critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
-    for current in range(min_sta_num, max_sta_num):
+    for current in range(93, 94):
         if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
