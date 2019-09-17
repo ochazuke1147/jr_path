@@ -50,7 +50,7 @@ critical_path_lengths = {}
 
 min_sta_num = 1
 max_sta_num = 176
-path_type = 'I'
+path_type = 'P'
 
 timer1 = Timer()
 timer2 = Timer()
@@ -58,7 +58,7 @@ timer2 = Timer()
 critical_lengths = []
 
 with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
-    for current in range(93, 94):
+    for current in range(9, 10):
         if path_type == 'L' and station_list.loc[current - 1]['sta_type'] != 'T':
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
@@ -71,7 +71,7 @@ with open(critical_lengths_list, mode='w', encoding='utf-8') as out:
         if not station_list.loc[current - 1]['use_search']:
             print('skipped current: ', station_list.loc[current - 1]['駅名'])
             continue
-        for goal in range(min_sta_num, max_sta_num):
+        for goal in range(157, 158):
             if path_type == 'L' and station_list.loc[goal - 1]['sta_type'] != 'T':
                 print('skipped goal: ', station_list.loc[goal - 1]['駅名'])
                 continue
