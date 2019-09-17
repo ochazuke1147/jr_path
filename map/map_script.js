@@ -218,7 +218,7 @@ function initMap() {
 // 直江津
         {
             position : { lat: 37.1702506, lng: 138.242039 },
-            title: "直江津",
+            title: "naoetsu",
             label_text: "0",
             color: "blue"
         },
